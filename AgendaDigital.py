@@ -5,9 +5,9 @@ class AgendaDigital:
     # agenda_digital principal de contactos
     _agenda_digital = {}
 
-    @classmethod
-    def inicializar_agenda(cls):
-        cls._agenda_digital = {}
+    # @classmethod
+    # def inicializar_agenda(cls):
+    #    cls._agenda_digital = {}
 
     @staticmethod
     def agregar_contacto_agenda(diccionario_contacto, nombre_contacto):
@@ -21,13 +21,24 @@ class AgendaDigital:
     @staticmethod
     # método que escribe un fichero
     def escribir_fichero():
-        # abre si no existe y sobreescribe si existe y cierra un fichero correctamente, w escritura, r lectura default
+        try:
+            # Intenta abrir el archivo para lectura y carga el contenido actual
+            with open("agenda_fichero.txt", "r") as agenda_fichero:
+                contenido = agenda_fichero.read()
+                # Intenta cargar el contenido como un diccionario
+                agenda_digital_actual = json.loads(contenido) if contenido.strip() else {}
+        except FileNotFoundError:
+            # Si el archivo no existe crea un diccionario vacio
+            agenda_digital_actual = {}
+
+        # Agrega o actualiza el nuevo diccionario
+        agenda_digital_actual.update(AgendaDigital._agenda_digital)
+
+        # Escribe el diccionario actualizado en el archivo
         with open("agenda_fichero.txt", "w") as agenda_fichero:
-            # Inicializar el diccionario antes de cargar los datos del archivo
-            AgendaDigital.inicializar_agenda()
 
             # Escribir el diccionario en el fichero
-            json.dump(AgendaDigital._agenda_digital, agenda_fichero)
+            json.dump(agenda_digital_actual, agenda_fichero)
             print("se agrego el contacto en el fichero")
 
     @staticmethod
