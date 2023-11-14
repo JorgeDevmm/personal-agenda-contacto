@@ -5,10 +5,6 @@ class AgendaDigital:
     # agenda_digital principal de contactos
     _agenda_digital = {}
 
-    # @classmethod
-    # def inicializar_agenda(cls):
-    #    cls._agenda_digital = {}
-
     @staticmethod
     def agregar_contacto_agenda(diccionario_contacto, nombre_contacto):
         if nombre_contacto in AgendaDigital._agenda_digital:
