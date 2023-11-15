@@ -8,7 +8,7 @@ def creacion_agenda():
         opcion = m.inicializar_menu()
 
         # se ejecuta si solo la opción es diferente a 6
-        if opcion != 6:
+        if opcion != 7:
             m.elegir_opciones(opcion)
             continuar = input("Desea continuar con otra operación s/n?: ")
             if continuar == 's' or continuar == "si" or continuar == "SI" or continuar == "S":
@@ -16,7 +16,7 @@ def creacion_agenda():
             else:
                 continuar = False
                 print("Programa finalizado")
-        elif opcion == 6:
+        elif opcion == 7:
             continuar = False
             print("Programa finalizado")
 

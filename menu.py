@@ -12,7 +12,8 @@ def inicializar_menu():
 3. Crea un nuevo contacto en la agenda digital
 4. Escribe la agenda resultante en un fichero
 5. Eliminar contacto a buscar del fichero
-6. Salir
+6. Buscar contacto en el fichero
+7. Salir
         ''')
     # insertar opción a ejecutar
     try:
@@ -30,7 +31,7 @@ def elegir_opciones(opcion):
     # global para reutilizar las variable en todo el documento
     global diccionario_contacto, nombre_contacto
     # validar opciones
-    if 1 <= opcion and opcion < 6:
+    if 1 <= opcion and opcion < 7:
         if opcion == 1:
             mostrar_fichero = AgendaDigital.leer_fichero()
             print(mostrar_fichero)
@@ -47,9 +48,17 @@ def elegir_opciones(opcion):
         elif opcion == 5:
             nombre_contacto_eliminar = input("Ingresar el nombre de contacto a eliminar: ")
             if AgendaDigital.eliminar_contacto_fichero(nombre_contacto_eliminar.upper()):
-                AgendaDigital.escribir_fichero()
+                AgendaDigital.escribir_fichero(nombre_contacto_eliminar)
             else:
                 print("Contacto a eliminar no válido o no existe")
+        elif opcion == 6:
+            nombre_contacto_buscar = input("Ingresar el nombre de contacto a buscar: ")
+            if AgendaDigital.buscar_contacto_fichero(nombre_contacto_buscar.upper()) is None:
+                print("No se encontró contacto")
+            else:
+                print(AgendaDigital.buscar_contacto_fichero(nombre_contacto_buscar.upper()))
+
+
 
     else:
         print("Opción no válida")
