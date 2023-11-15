@@ -7,11 +7,11 @@ class AgendaDigital:
 
     @staticmethod
     def agregar_contacto_agenda(diccionario_contacto, nombre_contacto):
-        """
-        Escribir la agenda creada en un diccionario
-        :param diccionario_contacto: dict que representa a un contacto
-        :param nombre_contacto: str que representa al contacto
-        :return:
+        """Agrega un diccionario contacto, con su nombre respectivo a al diccionario principal
+
+        :param diccionario_contacto: (dict) que representa a un contacto
+        :param nombre_contacto: (str) que representa al contacto
+        :return: None
         """
         if nombre_contacto in AgendaDigital._agenda_digital:
             print(f"{nombre_contacto} ya existe, no pudo agregar")
@@ -23,10 +23,11 @@ class AgendaDigital:
     @staticmethod
     # método que escribe un fichero
     def escribir_fichero(clave_eliminar=None):
-        """
-        Escribe el diccionario de la agenda digital en un archivo.
+        """Escribe el diccionario de la agenda digital en un archivo de disco.
 
-        :param clave_a_eliminar: Clave opcional a eliminar del diccionario actualizado
+        Ingresa al fichero, lee el fichero, luego lo carga como un diccionario el contenido
+
+        :param clave_a_eliminar: Clave opcional para eliminar del diccionario_fichero actualizado
         :return: None
         """
         try:
@@ -56,8 +57,7 @@ class AgendaDigital:
 
     @staticmethod
     def leer_fichero():
-        """
-        Lee el contenido del archivo de la agenda digital.
+        """Lee el contenido del archivo de la agenda digital.
 
         :return: Diccionario que representa la agenda digital.
         """
@@ -80,10 +80,9 @@ class AgendaDigital:
     @staticmethod
     # Eliminar el contacto por su nombre clave
     def eliminar_contacto_fichero(nombre_contacto):
-        """
-        Elimina un contacto del archivo de la agenda digital.
+        """Elimina un contacto del archivo de la agenda digital.
 
-        :param nombre_contacto: Nombre del contacto a eliminar.
+        :param nombre_contacto: (str) Nombre del contacto a eliminar
         :return: True si se eliminó correctamente, False si no se encontró el contacto.
         """
         try:
@@ -100,10 +99,9 @@ class AgendaDigital:
             return False
 
     def buscar_contacto_fichero(nombre_contacto):
-        """
-        Busca un contacto en el archivo de la agenda digital.
+        """Busca un contacto en el archivo de la agenda digital.
 
-        :param nombre_contacto: Nombre del contacto a buscar.
+        :param nombre_contacto: (str) Nombre del contacto a buscar.
         :return: Diccionario que representa al contacto si se encuentra, None si no se encuentra.
         """
         # obtengo el fiche en una variable tipo diccionario

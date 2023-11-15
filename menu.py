@@ -6,15 +6,15 @@ nombre_contacto = ""
 
 
 def inicializar_menu():
-    print('''AGENDA CONTACTOS
-1. Lee la agenda digital del fichero
-2. Solicita los datos de un nuevo contacto por pantalla al usuario
-3. Crea un nuevo contacto en la agenda digital
-4. Escribe la agenda resultante en un fichero
-5. Eliminar contacto a buscar del fichero
-6. Buscar contacto en el fichero
-7. Salir
-        ''')
+    print("""AGENDA CONTACTOS
+    1. Lee la agenda digital del fichero
+    2. Solicita los datos de un nuevo contacto por pantalla al usuario
+    3. Crea un nuevo contacto en la agenda digital
+    4. Escribe la agenda resultante en un fichero
+    5. Eliminar contacto a buscar del fichero
+    6. Buscar contacto en el fichero
+    7. Salir
+        """)
     # insertar opción a ejecutar
     try:
 
@@ -28,6 +28,11 @@ def inicializar_menu():
 
 
 def elegir_opciones(opcion):
+    """Seleccionar de acuerdo a la opción ingresada, una de las condiciones del menu
+
+    :param opcion: (int) número para las multiples opciónes a seleccionar
+    :return: None
+    """
     # global para reutilizar las variable en todo el documento
     global diccionario_contacto, nombre_contacto
     # validar opciones
@@ -65,6 +70,10 @@ def elegir_opciones(opcion):
 
 
 def solicitar_datos():
+    """Ingresamos los datos para el contacto por medio de inputs
+
+    :return: regresamos los mismos datos pero en mayúsculas
+    """
     nombre = input("Ingresar nombre: ")
     direccion = input("Ingresar Direccion: ")
     email = input("Ingresar Email: ")
@@ -74,6 +83,11 @@ def solicitar_datos():
 
 
 def obtener_contacto_para_agregar():
+    """Ingresamos un contacto, para luego instanciar de la clase contacto con los datos
+    de lo que retorna la función retorna datos, de la instancia creamos un contacto y lo guardamos en un diccionario
+
+    :return: diccionario_contacto (dict) y el nombre contacto ingresado en mayúscula para usarlo como clave a futuro
+    """
     global diccionario_contacto, nombre_contacto
     # Ingreso el nombre de contacto que será la clave por contacto
     nombre_contacto = input("Ingresar el nombre de contacto: ")
